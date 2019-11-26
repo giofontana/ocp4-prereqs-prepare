@@ -69,7 +69,7 @@
   command: setsebool -P haproxy_connect_any on
 
 - name: Set resolv for local dns
-  command: "nmcli con mod ens3 ipv4.dns {{ dns_ip }}"
+  command: "nmcli con mod {{ if_name }} ipv4.dns {{ dns_ip }}"
 
 - name: restart NM
   systemd:
