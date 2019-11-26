@@ -16,4 +16,4 @@ dns_hostname: "infra-services.rhbr-labs.com"
 control_plane_lb_ip: "192.168.0.10"
 apps_lb_ip: "192.168.0.10"
 
-nic_name: "ens3"
+if_name: "ens3"
