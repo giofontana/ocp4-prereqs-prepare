@@ -29,6 +29,7 @@ api IN A {{control_plane_lb_ip}}
 api-int IN A {{control_plane_lb_ip}}
 
 ; OCP APPS Wildcard A records
+apps IN A {{apps_lb_ip}}
 *.apps IN A {{apps_lb_ip}}
 
 ; ETCD A records
