@@ -65,6 +65,9 @@
     daemon_reload: yes
     name: dhcpd  
 
+- name: Set selinux for haproxy
+  command: setsebool -P haproxy_connect_any on
+
 - name: Define haproxy conf file
   tags: conf_haproxy
   template:
