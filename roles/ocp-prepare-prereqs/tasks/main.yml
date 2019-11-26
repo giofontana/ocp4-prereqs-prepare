@@ -2,6 +2,7 @@
 # tasks file for ocp-prepare-prereqs
 
 - name: Install DNS Server
+  tags: install_pkgs
   yum:
     name: "{{ packages }}"
     state: latest      
@@ -15,6 +16,7 @@
     - haproxy
 
 - name: Define named.conf
+  tags: conf_dns
   template:
     src: named.j2
     dest: /etc/named.conf
@@ -22,6 +24,7 @@
     group: root
 
 - name: Define zone file
+  tags: conf_dns
   template:
     src: dns-zone.j2
     dest: /var/named/{{zone_name}}.zone
@@ -29,6 +32,7 @@
     group: root
 
 - name: Define reverse zone file
+  tags: conf_dns
   template:
     src: dns-reverse-zone.j2
     dest: /var/named/{{reverse_zone_name}}.zone
