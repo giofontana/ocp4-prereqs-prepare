@@ -93,11 +93,10 @@
 
 - name: configure firewalld services
   firewalld:
-    service: "{{ services }}"
+    service: "{{ item }}"
     permanent: yes
     state: enabled      
-  vars:
-    services:
+  with_items:
     - dns
     - dhcp
     - http
@@ -105,10 +104,9 @@
 
 - name: configure firewalld ports
   firewalld:
-    port: "{{ ports }}"
+    port: "{{ item }}"
     permanent: yes
     state: enabled      
-  vars:
-    ports:
+  with_items:
     - "6443/tcp"
     - "22623/tcp"
