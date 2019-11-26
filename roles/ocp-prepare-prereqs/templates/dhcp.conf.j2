@@ -12,3 +12,13 @@ filename "http://{{ dns_hostname }}:8080/boot.ipxe";
 filename "undionly.kpxe";
 }
 }
+
+{% for host in groups['bootstrap'] %}
+
+host {{ hostvars[host]['inventory_hostname'].split(".")[0] }} {
+hardware ethernet {{ hostvars[host]['macaddress'] }};
+fixed-address {{ hostvars[host]['ansible_host'] }};
+option host-name "{{ hostvars[host]['inventory_hostname'] }}";
+}
+
+{% endfor %}
