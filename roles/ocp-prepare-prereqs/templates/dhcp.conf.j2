@@ -22,3 +22,24 @@ option host-name "{{ hostvars[host]['inventory_hostname'] }}";
 }
 
 {% endfor %}
+
+{% for host in groups['masters'] %}
+
+host {{ hostvars[host]['inventory_hostname'].split(".")[0] }} {
+hardware ethernet {{ hostvars[host]['macaddress'] }};
+fixed-address {{ hostvars[host]['ansible_host'] }};
+option host-name "{{ hostvars[host]['inventory_hostname'] }}";
+}
+
+{% endfor %}
+
+{% for host in groups['workers'] %}
+
+host {{ hostvars[host]['inventory_hostname'].split(".")[0] }} {
+hardware ethernet {{ hostvars[host]['macaddress'] }};
+fixed-address {{ hostvars[host]['ansible_host'] }};
+option host-name "{{ hostvars[host]['inventory_hostname'] }}";
+}
+
+{% endfor %}
+
