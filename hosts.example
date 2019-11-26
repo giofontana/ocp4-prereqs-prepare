@@ -2,6 +2,9 @@
 base_domain=rhbr-labs.com
 cluster_name=ocp
 
+[bootstrap]
+bootstrap-0.ocp.rhbr-labs.com ansible_host=192.168.0.40
+
 [masters]
 master-0.ocp.rhbr-labs.com ansible_host=192.168.0.50
 master-1.ocp.rhbr-labs.com ansible_host=192.168.0.51
