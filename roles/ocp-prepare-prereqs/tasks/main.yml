@@ -39,12 +39,12 @@
     owner: root
     group: root
 
-- name: restart  and enable dns-server
+- name: restart and enable dns-server
   systemd:
     state: restarted
     enabled: yes    
     daemon_reload: yes
-    name: bind-chroot    
+    name: named-chroot 
 
 - name: Define dhcp conf file
   tags: conf_dhcp
