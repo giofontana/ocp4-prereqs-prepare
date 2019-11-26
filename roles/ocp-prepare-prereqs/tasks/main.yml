@@ -39,6 +39,13 @@
     owner: root
     group: root
 
+- name: restart  and enable dns-server
+  systemd:
+    state: restarted
+    enabled: yes    
+    daemon_reload: yes
+    name: bind-chroot    
+
 - name: Define dhcp conf file
   tags: conf_dhcp
   template:
@@ -47,6 +54,13 @@
     owner: root
     group: root
 
+- name: restart and enable dhcp
+  systemd:
+    state: restarted
+    enabled: yes    
+    daemon_reload: yes
+    name: dhcpd  
+
 - name: Define haproxy conf file
   tags: conf_haproxy
   template:
@@ -54,3 +68,32 @@
     dest: /etc/haproxy/haproxy.cfg
     owner: root
     group: root    
+
+- name: restart and enable haproxy
+  systemd:
+    state: restarted
+    enabled: yes    
+    daemon_reload: yes
+    name: haproxy  
+
+- name: configure firewalld services
+  firewalld:
+    service: "{{ services }}"
+    permanent: yes
+    state: enabled      
+  vars:
+    services:
+    - dns
+    - dhcp
+    - http
+    - https
+
+- name: configure firewalld ports
+  firewalld:
+    port: "{{ ports }}"
+    permanent: yes
+    state: enabled      
+  vars:
+    ports:
+    - "6443/tcp"
+    - "22623/tcp"
