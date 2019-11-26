@@ -13,15 +13,15 @@ $TTL    604800
 {{dns_hostname}} IN A {{dns_ip}}
 
 {% for host in groups['bootstrap'] %}
-{{ hostvars[host]['inventory_hostname'] }} IN A {{ hostvars[host]['ansible_host'] }}
+{{ hostvars[host]['inventory_hostname'].split(".")[0] }} IN A {{ hostvars[host]['ansible_host'] }}
 {% endfor %}
 
 {% for host in groups['masters'] %}
-{{ hostvars[host]['inventory_hostname'] }} IN A {{ hostvars[host]['ansible_host'] }}
+{{ hostvars[host]['inventory_hostname'].split(".")[0] }} IN A {{ hostvars[host]['ansible_host'] }}
 {% endfor %}
 
 {% for host in groups['workers'] %}
-{{ hostvars[host]['inventory_hostname'] }} IN A {{ hostvars[host]['ansible_host'] }}
+{{ hostvars[host]['inventory_hostname'].split(".")[0] }} IN A {{ hostvars[host]['ansible_host'] }}
 {% endfor %}
 
 ; OCP API A records
