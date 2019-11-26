@@ -46,3 +46,11 @@
     dest: /etc/dhcp/dhcpd.conf
     owner: root
     group: root
+
+- name: Define haproxy conf file
+  tags: conf_haproxy
+  template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root    
