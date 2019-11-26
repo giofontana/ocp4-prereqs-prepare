@@ -12,7 +12,7 @@ zone_name: "ocp.rhbr-labs.com"
 reverse_zone_name: "0.168.192.in-addr.arpa"
 
 ##### zone
-dns_hostname: "infra-services.ocp.rhbr-labs.com"
+dns_hostname: "infra-services.rhbr-labs.com"
 control_plane_lb_ip: "192.168.0.10"
 apps_lb_ip: "192.168.0.10"
 
