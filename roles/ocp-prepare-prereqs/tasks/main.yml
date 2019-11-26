@@ -1,0 +1,37 @@
+---
+# tasks file for ocp-prepare-prereqs
+
+- name: Install DNS Server
+  yum:
+    name: "{{ packages }}"
+    state: latest      
+  vars:
+    packages:
+    - bind-chroot
+    - tftp-server 
+    - ipxe-bootimgs
+    - dhcp-server
+    - httpd
+    - haproxy
+
+- name: Define named.conf
+  template:
+    src: named.j2
+    dest: /etc/named.conf
+    owner: root
+    group: root
+
+- name: Define zone file
+  template:
+    src: dns-zone.j2
+    dest: /var/named/{{zone_name}}.zone
+    owner: root
+    group: root
+
+- name: Define reverse zone file
+  template:
+    src: dns-reverse-zone.j2
+    dest: /var/named/{{reverse_zone_name}}.zone
+    owner: root
+    group: root
+
