@@ -1,5 +1,0 @@
----
-- hosts: all
-  roles:
-  - { role: ocp-prepare-prereqs }
-  gather_facts: no  
