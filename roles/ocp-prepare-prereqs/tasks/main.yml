@@ -1,7 +1,7 @@
 ---
 # tasks file for ocp-prepare-prereqs
 
-- name: Install DNS Server
+- name: Install Required Packages
   tags: install_pkgs
   yum:
     name: "{{ packages }}"
