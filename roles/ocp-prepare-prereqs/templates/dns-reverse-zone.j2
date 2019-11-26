@@ -12,15 +12,15 @@
 {{ dns_ip.split(".")[-1] }} IN PTR {{dns_hostname}}.
 
 {% for host in groups['bootstrap'] %}
-{{ hostvars[host]['ansible_bond0']['ipv4']['address'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
+{{ hostvars[host]['ansible_host'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
 {% endfor %}
 
 {% for host in groups['masters'] %}
-{{ hostvars[host]['ansible_bond0']['ipv4']['address'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
+{{ hostvars[host]['ansible_host'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
 {% endfor %}
 
 {% for host in groups['workers'] %}
-{{ hostvars[host]['ansible_bond0']['ipv4']['address'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
+{{ hostvars[host]['ansible_host'].split(".")[-1] }} IN PTR {{ hostvars[host]['inventory_hostname'] }}.
 {% endfor %}
 
 
