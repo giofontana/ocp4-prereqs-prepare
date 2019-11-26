@@ -32,7 +32,7 @@
     group: root
 
 - name: Define reverse zone file
-  tags: conf_dns
+  tags: conf_non_tested
   template:
     src: dns-reverse-zone.j2
     dest: /var/named/{{reverse_zone_name}}.zone
