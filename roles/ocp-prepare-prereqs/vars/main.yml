@@ -4,6 +4,8 @@
 ##### named.conf
 subnet: "192.168.0.0"
 mask: "16"
+netmask: "255.255.0.0"
+gateway: "192.168.0.2"
 dns_ip: "192.168.0.10"
 dns_forwarder: "192.168.0.1"
 zone_name: "ocp.rhbr-labs.com"

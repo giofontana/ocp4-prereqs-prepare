@@ -39,3 +39,10 @@
     owner: root
     group: root
 
+- name: Define dhcp conf file
+  tags: conf_dhcp
+  template:
+    src: dhcp.conf.j2
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    group: root
