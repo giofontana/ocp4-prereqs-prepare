@@ -68,6 +68,19 @@
 - name: Set selinux for haproxy
   command: setsebool -P haproxy_connect_any on
 
+- name: Set resolv for local dns
+  nmcli:
+    conn_name: ens3
+    type: ethernet
+    dns4:
+    - 192.168.0.10
+    state: present
+
+- name: restart NM
+  systemd:
+    state: restarted   
+    name: NetworkManager  
+
 - name: Define haproxy conf file
   tags: conf_haproxy
   template:
